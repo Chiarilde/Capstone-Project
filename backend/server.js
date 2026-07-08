@@ -2,6 +2,7 @@ import express, { json } from "express";
 
 import cors from "cors";
 import authRoute from "./modules/auth/auth.route.js";
+import venueRoutes from "./modules/venue/venue.route.js";
 
 import dotenv from "dotenv";
 
@@ -14,6 +15,7 @@ const server = express();
 server.use(cors());
 server.use(json());
 server.use("/", authRoute);
+server.use("/venues", venueRoutes);
 
 server.get("/", (req, res) => {
     res.send("Server is up and running");

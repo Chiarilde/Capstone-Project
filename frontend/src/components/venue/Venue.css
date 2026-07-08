@@ -1,0 +1,102 @@
+.venue-card {
+    width: 300px;
+    border-radius: 16px;
+    border: 1px solid #ff7b19;
+    box-shadow: inset 0 0 40px rgba(255, 123, 25, 0.9);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.venue-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(255, 123, 25, 0.9);
+}
+
+.venue-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.venue-content {
+    padding: 12px;
+}
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #222;
+}
+.venue-title {
+    font-size: 18px;
+    margin: 0;
+    color: #ff8f3d;
+}
+
+.venue-location {
+    font-size: 13px;
+    color: rgb(10, 10, 10);
+    font-weight: 500;
+}
+
+.venue-description {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #444;
+}
+
+.venue-activities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.activity-tag {
+    font-size: 11px;
+    background: #fff4b7bd;
+    color: #466b8d;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.venue-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-button {
+    background: #ff7b19;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 123, 25, 0.5);
+    transition: all 0.3s ease;
+}
+
+.book-button:hover {
+    background: #ff8f3d;
+    box-shadow: 0 0 15px rgba(255, 123, 25, 0.8);
+    transform: translateY(-2px);
+}
+
+.book-button:active {
+    transform: translateY(0);
+}
+
+.price {
+    color: #466b8d;
+}
+
+.capacity {
+    color: #466b8d;
+}

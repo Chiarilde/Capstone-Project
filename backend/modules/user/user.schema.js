@@ -38,12 +38,6 @@ const userSchema = new mongoose.Schema(
                 ref: "Venue",
             },
         ],
-
-        role: {
-            type: String,
-            enum: ["user", "admin"],
-            default: "user",
-        },
     },
     {
         timestamps: true,
