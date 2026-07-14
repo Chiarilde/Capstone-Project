@@ -1,17 +1,3 @@
-// import "../login/Login.css";
-
-// export default function Login() {
-//     return (
-//         <div className="login-container">
-//             <div className="login-card">
-//                 <h2>Sei già un RetreatHubber?</h2>
-//                 <input type="email" placeholder="Email" />
-//                 <input type="password" placeholder="Password" />
-//                 <button>Accedi</button>
-//             </div>
-//         </div>
-//     );
-// }
 import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +28,7 @@ export default function Login() {
 
             if (response.ok) {
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("userId", data.user._id);
                 navigate("/");
             } else {
                 alert(data.message || "Errore login");

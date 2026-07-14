@@ -24,7 +24,7 @@ const styles = {
     container: {
         display: "flex",
         flexWrap: "wrap",
-        gap: "20px",
+        gap: "40px",
         padding: "20px",
         justifyContent: "center",
     },

@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const reservationSchema = new mongoose.Schema(
     {
         user: {
@@ -6,32 +7,37 @@ const reservationSchema = new mongoose.Schema(
             ref: "User",
             required: true,
         },
-
         venue: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Venue",
+            ref: "Location",
             required: true,
         },
-
-        startDate: {
+        checkIn: {
             type: Date,
             required: true,
         },
-
-        endDate: {
+        checkOut: {
             type: Date,
             required: true,
         },
-
+        days: {
+            type: Number,
+            required: true,
+            min: 1,
+        },
         guests: {
             type: Number,
             required: true,
             min: 1,
         },
-
         totalPrice: {
             type: Number,
-            default: 0,
+            required: true,
+        },
+        status: {
+            type: String,
+            enum: ["pending", "confirmed", "cancelled"],
+            default: "pending",
         },
     },
     {

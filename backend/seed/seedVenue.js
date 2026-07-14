@@ -1,33 +1,33 @@
 export const seedVenues = [
     {
-        name: "Ocean Wind Villa",
+        name: "Ocean Wild Villa",
         location: "Fuerteventura, Spain",
         description:
-            "Villa minimalista con vista oceano, perfetta per surf e relax tra dune e vento atlantico.",
+            "Villa minimalista con vista sull'oceano, perfetta per surf e yoga tra dune e vento atlantico.",
         pricePerNight: 45,
         capacity: 20,
         images: ["fuerte.jpg"],
-        activities: ["surf", "wing foil", "sup"],
+        activities: ["surf", "wing foil", "yoga"],
     },
     {
         name: "Cliff Yoga Retreat",
         location: "Tenerife, Spain",
         description:
-            "Retreat su scogliera vulcanica con sessioni di yoga al tramonto sull’oceano.",
+            "Retreat su scogliera vulcanica con sessioni di yoga al tramonto.",
         pricePerNight: 55,
         capacity: 25,
         images: ["tenerife.jpg"],
-        activities: ["yoga sul tramonto", "sup", "relax"],
+        activities: ["yoga al tramonto", "surf"],
     },
     {
         name: "Riad Dune Escape",
         location: "Essaouira, Morocco",
         description:
-            "Riad tradizionale tra medina e oceano, hotspot per surf e cultura berbera.",
+            "Riad tradizionale tra medina e oceano, hotspot ideale per surf e cultura berbera.",
         pricePerNight: 40,
         capacity: 15,
         images: ["riad.jpg"],
-        activities: ["surf", "cultural tour", "meditation"],
+        activities: ["surf", "cultural tour"],
     },
     {
         name: "Trabucco Sunset House",
@@ -37,7 +37,7 @@ export const seedVenues = [
         pricePerNight: 57,
         capacity: 10,
         images: ["puglia.jpg"],
-        activities: ["yoga sul trabucco al tramonto", "sup", "relax"],
+        activities: ["yoga sul trabucco al tramonto", "sup"],
     },
     {
         name: "Bali Flow Villa",
@@ -47,13 +47,13 @@ export const seedVenues = [
         pricePerNight: 34,
         capacity: 15,
         images: ["bali1.jpg"],
-        activities: ["surf", "yoga", "meditation", "breathwork"],
+        activities: ["surf", "yoga", "mindfulness"],
     },
     {
         name: "Atlantic Skate Loft",
         location: "Lisbon, Portugal",
         description:
-            "Loft urbano creativo tra skate spot, street culture e vista oceano.",
+            "Loft urbano creativo tra skate spot, street culture e night life.",
         pricePerNight: 49,
         capacity: 20,
         images: ["lisbona.jpg"],
@@ -63,11 +63,11 @@ export const seedVenues = [
         name: "Dunas Wing House",
         location: "Fuerteventura, Spain",
         description:
-            "Casa vicino alle dune, uno dei migliori spot europei per il wing foil.",
+            "Villa coloniale a Sotavento, uno dei migliori spot europei per il wing foil.",
         pricePerNight: 56,
         capacity: 25,
         images: ["fuerteventura.jpg"],
-        activities: ["wing foil", "sup", "surf"],
+        activities: ["wing foil", "windsurf", "surf"],
     },
     {
         name: "Hidden Surf Riad",
@@ -77,7 +77,7 @@ export const seedVenues = [
         pricePerNight: 40,
         capacity: 10,
         images: ["marocco.jpg"],
-        activities: ["surf", "yoga", "chill"],
+        activities: ["surf", "yoga", "cultural tour"],
     },
     {
         name: "Cliffside Skate & Surf House",
@@ -97,6 +97,25 @@ export const seedVenues = [
         pricePerNight: 39,
         capacity: 30,
         images: ["bali.jpg"],
-        activities: ["yoga", "workation", "meditation"],
+        activities: ["yoga", "sup", "mindfulness"],
+    },
+    {
+        name: "Casita Bonita",
+        location: "Tarifa, Spain",
+        description: "Casa immersa nella pineta fra yoga, corsi di sup e surf.",
+        pricePerNight: 69,
+        capacity: 20,
+        images: ["tarifa.jpg"],
+        activities: ["yoga", "sup", "surf"],
+    },
+    {
+        name: "Camping Poggio Reale",
+        location: "Sardinia, Italy",
+        description:
+            "Bungalows sul mare con possibilità di praticare sup, equitazione e biking.",
+        pricePerNight: 39,
+        capacity: 20,
+        images: ["sardinia.jpg"],
+        activities: ["riding horses", "sup", "biking"],
     },
 ];
