@@ -12,10 +12,14 @@ export default function VenueList() {
     }, []);
 
     return (
-        <div style={styles.container}>
-            {venues.map((venue) => (
-                <VenueCard key={venue._id} venue={venue} />
-            ))}
+        <div>
+            <h1 style={styles.title}>TOP DESTINATIONS</h1>
+
+            <div style={styles.container}>
+                {venues.map((venue) => (
+                    <VenueCard key={venue._id} venue={venue} />
+                ))}
+            </div>
         </div>
     );
 }

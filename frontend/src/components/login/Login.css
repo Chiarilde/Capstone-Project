@@ -37,7 +37,7 @@
 
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 7px;
 
     border-radius: 12px;
     text-align: center;
@@ -69,13 +69,17 @@
         filter: hue-rotate(360deg);
     }
 }
+.switch-mode {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .switch-mode,
 h2 {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     font-size: 1.4rem;
 }
 input {
@@ -83,6 +87,12 @@ input {
     padding: 10px;
 }
 
+.input {
+    gap: 6px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 button {
     width: 55%;
     font-size: 14px;

@@ -30,11 +30,11 @@ const login = async (email, password) => {
         },
         process.env.JWT_SECRET,
         {
-            expiresIn: "1h",
+            expiresIn: "1Hr",
         },
     );
 
-    return { token };
+    return { token, user };
 };
 
 const register = async ({ firstName, lastName, email, password }) => {

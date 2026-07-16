@@ -97,7 +97,7 @@ export default function Login() {
         <div className="login-container">
             <div className="login-intro">
                 <h1>
-                    <span class="colors">Welcome to Retreat Hub</span>
+                    <span className="colors">Welcome to Retreat Hub</span>
                 </h1>
 
                 <p>
@@ -131,7 +131,7 @@ export default function Login() {
                 </h2>
 
                 {isRegister && (
-                    <div className="input">
+                    <>
                         <input
                             type="text"
                             placeholder="Nome"
@@ -145,7 +145,7 @@ export default function Login() {
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                         />
-                    </div>
+                    </>
                 )}
 
                 <input
