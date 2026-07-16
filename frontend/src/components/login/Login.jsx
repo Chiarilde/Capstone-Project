@@ -2,7 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-
+import logo from "../../assets/logo.png";
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Login() {
@@ -95,19 +95,21 @@ export default function Login() {
 
     return (
         <div className="login-container">
-            <div className="login-intro">
-                <h1>
-                    <span className="colors">Welcome to Retreat Hub</span>
-                </h1>
-
+            <div className="login-page">
+                <img src={logo} alt="Retreat Hut logo" className="logo" />
+                <div className="login-intro">
+                    <h1>
+                        <span className="colors">Welcome to Retreat Hut</span>
+                    </h1>
+                </div>
                 <p>
-                    Retreat Hub è la piattaforma dedicata a chi desidera vivere
+                    Retreat Hut è la piattaforma dedicata a chi desidera vivere
                     esperienze autentiche in luoghi straordinari. Esplora
                     retreat e location selezionate in destinazioni come{" "}
-                    <strong>Bali</strong>, <strong>Fuerteventura</strong>,
-                    <strong> Tenerife</strong>, <strong>Portogallo</strong>,{" "}
-                    <strong>Marocco</strong> e <strong>Puglia</strong>, dove
-                    natura, sport e benessere si incontrano.
+                    <strong>Indonesia</strong>, <strong>Spagna</strong>,
+                    <strong> Portogallo</strong>, <strong>Marocco</strong> e{" "}
+                    <strong>Italia</strong>, dove natura, sport e benessere si
+                    incontrano.
                 </p>
 
                 <p>
@@ -119,7 +121,7 @@ export default function Login() {
                 <p className="login-call">
                     Registrati o accedi per scoprire tutte le strutture
                     disponibili, prenotare la tua prossima esperienza e far
-                    parte della community Retreat Hub. 👉
+                    parte della community di Retreat Hut. 👉
                 </p>
             </div>
 
@@ -127,7 +129,7 @@ export default function Login() {
                 <h2>
                     {isRegister
                         ? "Crea il tuo account"
-                        : "Sei già un RetreatHubber?"}
+                        : "Sei già un RetreatHutter?"}
                 </h2>
 
                 {isRegister && (
