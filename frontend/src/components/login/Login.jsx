@@ -84,6 +84,7 @@ export default function Login() {
 
             if (response.ok) {
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("userId", data.user._id);
                 navigate("/");
             } else {
                 alert(data.message || "Errore Google login");
@@ -109,15 +110,11 @@ export default function Login() {
                     <strong>Indonesia</strong>, <strong>Spagna</strong>,
                     <strong> Portogallo</strong>, <strong>Marocco</strong> e{" "}
                     <strong>Italia</strong>, dove natura, sport e benessere si
-                    incontrano.
+                    incontrano. Dallo <i>yoga</i> al tramonto sul trabucco al{" "}
+                    <i>surf</i>, dal <i>wing foil</i> al <i>SUP</i>, ogni
+                    destinazione offre attività pensate per rigenerare corpo e
+                    mente.
                 </p>
-
-                <p>
-                    Dallo <i>yoga</i> al tramonto sul trabucco al <i>surf</i>,
-                    dal <i>wing foil</i> al <i>SUP</i>, ogni destinazione offre
-                    attività pensate per rigenerare corpo e mente.
-                </p>
-
                 <p className="login-call">
                     Registrati o accedi per scoprire tutte le strutture
                     disponibili, prenotare la tua prossima esperienza e far

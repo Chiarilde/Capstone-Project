@@ -73,7 +73,7 @@ export const deleteUser = async (req, res) => {
 
 export const getFavorites = async (req, res) => {
     try {
-        const favorites = await userService.getFavorites(req.user.id);
+        const favorites = await userService.getFavorites(req.user._id);
 
         res.status(200).json(favorites);
     } catch (error) {

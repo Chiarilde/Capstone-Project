@@ -113,7 +113,7 @@ h1 {
     font-weight: 700;
     letter-spacing: 3px;
     margin: 40px 0;
-    color: white;
+    color: #ffa21ff7;
 }
 
 .image-container {
@@ -145,9 +145,9 @@ h1 {
 .header {
     display: flex;
     width: 100%;
-    background-color: #ffa21ff7;
-    justify-content: center;
-    position: relative;
+    margin-top: 20px;
+    margin-bottom: 90px;
+    gap: 10px;
 }
 .favourites-button {
     background-color: #ffa21ff7;
@@ -171,14 +171,30 @@ h1 {
 .logout-button {
     background-color: #fefdf9;
     color: #ff8f3d;
-    border: none;
+    border: 1px solid #ff8f3d;
     cursor: pointer;
     width: 100px;
     height: 40px;
-    align-self: center;
+
     position: absolute;
     right: 5px;
     font-weight: 600;
+}
+.fav-button {
+    background-color: #ff8f3d;
+    color: #fefdf9;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    height: 40px;
+    font-weight: 600;
+    position: absolute;
+    right: 120px;
+}
+.fav-button:nth-child(2) {
+    margin-right: 10px;
+    background-color: #ffa21ff7;
+    right: 264px;
 }
 .logout-button:hover {
     background-color: #e3e3e2;
