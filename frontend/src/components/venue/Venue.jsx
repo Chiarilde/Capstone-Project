@@ -1,18 +1,19 @@
-import { useState } from "react";
 import "./Venue.css";
-import BookingModal from "../booking/BookingModal.jsx";
 
-export default function VenueCard({ venue }) {
-    const [favorite, setFavorite] = useState(venue.isFavorite || false);
-    const [showBooking, setShowBooking] = useState(false);
+export default function VenueCard({
+    venue,
+    setShowBooking,
+    favorites,
+    fetchFavourites,
+}) {
+    const userId = localStorage.getItem("userId");
+    const isFavorite = favorites.some((fav) => fav._id === venue._id);
 
     const image = venue.images?.[0]
         ? new URL(`../../assets/${venue.images[0]}`, import.meta.url).href
         : "https://via.placeholder.com/400";
 
-    const toggleFavorite = async () => {
-        const userId = localStorage.getItem("userId");
-
+    const addFavorite = async () => {
         try {
             const response = await fetch(
                 import.meta.env.VITE_BACKEND_URL + "/users/favorites",
@@ -31,10 +32,43 @@ export default function VenueCard({ venue }) {
             if (!response.ok) {
                 throw new Error("Errore salvataggio preferito");
             }
-
-            setFavorite(!favorite);
+            fetchFavourites();
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    const removeFavorite = async () => {
+        try {
+            const response = await fetch(
+                import.meta.env.VITE_BACKEND_URL +
+                    "/users/favorites/" +
+                    venue._id,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                    }),
+                },
+            );
+
+            if (!response.ok) {
+                throw new Error("Errore rimozione preferito");
+            }
+            fetchFavourites();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const toggleFavorite = async () => {
+        if (!isFavorite) {
+            addFavorite();
+        } else {
+            removeFavorite();
         }
     };
 
@@ -50,7 +84,7 @@ export default function VenueCard({ venue }) {
                 />
 
                 <button
-                    className={`favorite-button ${favorite ? "active" : ""}`}
+                    className={`favorite-button ${isFavorite ? "active" : ""}`}
                     onClick={toggleFavorite}
                 >
                     ♥
@@ -62,9 +96,7 @@ export default function VenueCard({ venue }) {
 
                 <p className="venue-location">📍 {venue.location}</p>
 
-                <p className="venue-description">
-                    {venue.description?.slice(0, 80)}...
-                </p>
+                <p className="venue-description">{venue.description}</p>
 
                 <div className="venue-activities">
                     {venue.activities?.slice(0, 3).map((act, i) => (
@@ -83,18 +115,12 @@ export default function VenueCard({ venue }) {
 
                     <button
                         className="book-button"
-                        onClick={() => setShowBooking(true)}
+                        onClick={() => setShowBooking(venue)}
                     >
                         Prenota ora
                     </button>
                 </div>
             </div>
-
-            <BookingModal
-                open={showBooking}
-                onClose={() => setShowBooking(false)}
-                venue={venue}
-            />
         </div>
     );
 }

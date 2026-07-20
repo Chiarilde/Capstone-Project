@@ -50,7 +50,9 @@ export const getFavorites = async (userId) => {
         throw new Error("User not found");
     }
 
-    return user.favorites;
+    const favorites = user.favorites.map((favorite) => favorite._id);
+
+    return favorites;
 };
 
 export const addFavorite = async (userId, venueId) => {

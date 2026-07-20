@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./BookingModal.css";
+import { useNavigate } from "react-router-dom";
 
-export default function BookingModal({ open, onClose, venue }) {
-    const [booking, setBooking] = useState({
-        startDate: "",
-        nights: 1,
-        guests: 1,
-    });
+const initialBookingState = {
+    checkIn: "",
+    days: 1,
+    guests: 1,
+    venue: null,
+    user: localStorage.getItem("userId"),
+};
+
+export default function BookingModal({ open, onClose }) {
+    const [booking, setBooking] = useState(initialBookingState);
+    const [price, setPrice] = useState(0);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setBooking({
+            ...initialBookingState,
+        });
+        setPrice(open?.pricePerNight);
+    }, [open]);
 
     if (!open) return null;
 
@@ -15,17 +31,36 @@ export default function BookingModal({ open, onClose, venue }) {
             ...booking,
             [e.target.name]: e.target.value,
         });
+        if (e.target.name === "days") {
+            setPrice(open.pricePerNight * e.target.value * booking.guests);
+        }
+        if (e.target.name === "guests") {
+            setPrice(open.pricePerNight * booking.days * e.target.value);
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log({
-            venue,
-            ...booking,
-        });
-
-        // Qui in seguito farai la fetch al backend
+        fetch(import.meta.env.VITE_BACKEND_URL + "/reservations", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify({
+                ...booking,
+                venue: open._id,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.message === "Reservation created successfully") {
+                    navigate("/reservations");
+                }
+            })
+            .catch((err) => console.log(err));
 
         onClose();
     };
@@ -39,8 +74,8 @@ export default function BookingModal({ open, onClose, venue }) {
                     <label>Data di inizio</label>
                     <input
                         type="date"
-                        name="startDate"
-                        value={booking.startDate}
+                        name="checkIn"
+                        value={booking.checkIn}
                         onChange={handleChange}
                         required
                     />
@@ -48,9 +83,9 @@ export default function BookingModal({ open, onClose, venue }) {
                     <label>Numero di notti</label>
                     <input
                         type="number"
-                        name="nights"
+                        name="days"
                         min="1"
-                        value={booking.nights}
+                        value={booking.days}
                         onChange={handleChange}
                         required
                     />
@@ -65,12 +100,14 @@ export default function BookingModal({ open, onClose, venue }) {
                         required
                     />
 
+                    <p>Prezzo totale: €{price}</p>
+
                     <div className="modal-buttons">
                         <button type="button" onClick={onClose}>
                             Annulla
                         </button>
 
-                        <button type="submit">Conferma prenotazione</button>
+                        <button type="submit">Conferma</button>
                     </div>
                 </form>
             </div>

@@ -1,17 +1,18 @@
 import Reservation from "../reservation/reservation.schema.js";
+import Venue from "../venue/venue.schema.js";
 
 export const createReservation = async (reservationData) => {
-    const { location, checkIn, days, guests, user } = reservationData;
+    const { venue, checkIn, days, guests, user } = reservationData;
 
     // Controlla che la location esista
-    const locationFound = await Location.findById(location);
+    const venueFound = await Venue.findById(venue);
 
-    if (!locationFound) {
+    if (!venueFound) {
         throw new Error("Location not found");
     }
 
     // Calcola il prezzo totale
-    const totalPrice = locationFound.pricePerNight * days;
+    const totalPrice = venueFound.pricePerNight * days;
 
     // Calcola la data di check-out
     const checkOut = new Date(checkIn);
@@ -19,7 +20,7 @@ export const createReservation = async (reservationData) => {
 
     // Controlla se esistono prenotazioni sovrapposte
     const existingReservation = await Reservation.findOne({
-        location,
+        venue: venueFound._id,
         checkIn: { $lt: checkOut },
         checkOut: { $gt: new Date(checkIn) },
         status: { $ne: "cancelled" },
@@ -32,7 +33,7 @@ export const createReservation = async (reservationData) => {
     // Salva la prenotazione
     const reservation = await Reservation.create({
         user,
-        location,
+        venue: venueFound._id,
         checkIn,
         checkOut,
         days,

@@ -23,7 +23,7 @@ router.put("/:id", updateUser);
 
 router.delete("/:id", deleteUser);
 
-router.get("/favorites", getFavorites);
+router.get("/favorites/:id", getFavorites);
 
 router.post("/favorites", addFavorite);
 

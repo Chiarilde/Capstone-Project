@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "./components/login/Login.jsx";
 import VenueList from "./components/venue/VenueList.jsx";
+import BookingPage from "./components/booking/BookingPage.jsx";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     }
                 >
                     <Route path="/" element={<VenueList />} />
+                    <Route path="/reservations" element={<BookingPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
