@@ -9,7 +9,7 @@ const reservationSchema = new mongoose.Schema(
         },
         venue: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Location",
+            ref: "Venue",
             required: true,
         },
         checkIn: {

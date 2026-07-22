@@ -15,8 +15,8 @@ export const createReservation = async (reservationData) => {
     const totalPrice = venueFound.pricePerNight * days;
 
     // Calcola la data di check-out
-    const checkOut = new Date(checkIn);
-    checkOut.setDate(checkOut.getDate() + days);
+    const _days = days * 86400000;
+    const checkOut = Date.parse(new Date(checkIn)) + _days;
 
     // Controlla se esistono prenotazioni sovrapposte
     const existingReservation = await Reservation.findOne({

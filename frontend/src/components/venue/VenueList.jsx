@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import VenueCard from "./Venue.jsx";
 import BookingModal from "../booking/BookingModal.jsx";
+import notFavourite from "../../assets/notfavourite.png";
 
 export default function VenueList() {
-    const [venues, setVenues] = useState([]);
-    const [favorites, setFavorites] = useState([]);
-    const [displayVenues, setDisplayVenues] = useState([]);
+    const [venues, setVenues] = useState({
+        allVenues: [],
+        favorites: [],
+    });
     const [showBooking, setShowBooking] = useState(null);
     const [showAll, setShowAll] = useState(true);
 
@@ -18,58 +20,68 @@ export default function VenueList() {
         navigate("/login");
     };
 
-    const fetchFavourites = (venues) => {
-        fetch(
-            import.meta.env.VITE_BACKEND_URL +
-                "/users/favorites/" +
-                localStorage.getItem("userId"),
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    const fetchFavourites = async (_venues) => {
+        try {
+            const res = await fetch(
+                import.meta.env.VITE_BACKEND_URL +
+                    "/users/favorites/" +
+                    localStorage.getItem("userId"),
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                    user: { _id: localStorage.getItem("userId") },
                 },
-                user: { _id: localStorage.getItem("userId") },
-            },
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.length === 0) {
-                    alert("You have no favourites yet.");
-                } else {
-                    const _favourites = venues.filter((venue) =>
-                        data.includes(venue._id),
-                    );
-                    setFavorites(_favourites);
-                }
-            })
-            .catch((err) => console.log(err));
+            );
+            const data = await res.json();
+
+            const _favorites = _venues.filter((venue) =>
+                data.includes(venue._id),
+            );
+            setVenues((prev) => ({ ...prev, favorites: _favorites }));
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     useEffect(() => {
-        fetch(import.meta.env.VITE_BACKEND_URL + "/venues")
-            .then((res) => res.json())
-            .then((data) => {
-                setVenues(data);
-                setDisplayVenues(data);
-                fetchFavourites(data);
-            })
-            .catch((err) => console.log(err));
+        const fetchVenues = async () => {
+            try {
+                const res = await fetch(
+                    import.meta.env.VITE_BACKEND_URL + "/venues",
+                );
+                const data = await res.json();
+                if (data) {
+                    setVenues((prev) => ({ ...prev, allVenues: data }));
+                    fetchFavourites(data);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchVenues();
     }, []);
 
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setDisplayVenues(showAll ? venues : favorites);
-    }, [showAll]);
+    const handleMyFavourites = async () => {
+        if (showAll) await fetchFavourites(venues.allVenues);
+        setShowAll((prev) => !prev);
+    };
 
     return (
         <div>
             <div className="header">
                 <img src={logo} alt="Retreat Hut logo" className="logo" />
-                <button className="fav-button">My Reservations 📌</button>
                 <button
-                    onClick={() => setShowAll((prev) => !prev)}
-                    className="fav-button"
+                    className="res-button"
+                    onClick={() => navigate("/reservations")}
+                >
+                    My Reservations 📌
+                </button>
+                <button
+                    onClick={handleMyFavourites}
+                    className={`fav-button ${!showAll ? "active" : ""}`}
                 >
                     My Favourites ❤️
                 </button>
@@ -79,13 +91,34 @@ export default function VenueList() {
             </div>
 
             <div style={styles.container}>
-                {displayVenues.map((venue) => (
+                {!showAll && venues.favorites.length === 0 && (
+                    <div>
+                        <p
+                            style={{
+                                textAlign: "center",
+                                width: "100%",
+                                marginTop: "20vh",
+                            }}
+                        >
+                            Non hai nessun preferito.
+                        </p>
+
+                        <img
+                            src={notFavourite}
+                            alt="Nessun preferito"
+                            style={{ width: "250px" }}
+                        />
+                    </div>
+                )}
+                {venues[showAll ? "allVenues" : "favorites"].map((venue) => (
                     <VenueCard
                         key={venue._id}
                         venue={venue}
                         setShowBooking={setShowBooking}
-                        favorites={favorites}
-                        fetchFavourites={() => fetchFavourites(venues)}
+                        favorites={venues.favorites}
+                        fetchFavourites={() =>
+                            fetchFavourites(venues.allVenues)
+                        }
                     />
                 ))}
             </div>

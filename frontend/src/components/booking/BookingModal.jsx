@@ -13,6 +13,7 @@ const initialBookingState = {
 export default function BookingModal({ open, onClose }) {
     const [booking, setBooking] = useState(initialBookingState);
     const [price, setPrice] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ export default function BookingModal({ open, onClose }) {
             ...initialBookingState,
         });
         setPrice(open?.pricePerNight);
+        setErrorMessage("");
     }, [open]);
 
     if (!open) return null;
@@ -55,14 +57,17 @@ export default function BookingModal({ open, onClose }) {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.message === "Reservation created successfully") {
                     navigate("/reservations");
+                } else {
+                    console.error(data.message);
+                    setErrorMessage(data.message);
                 }
             })
-            .catch((err) => console.log(err));
-
-        onClose();
+            .catch((err) => {
+                console.error(err.message);
+                setErrorMessage(err.message);
+            });
     };
 
     return (
@@ -102,12 +107,17 @@ export default function BookingModal({ open, onClose }) {
 
                     <p>Prezzo totale: €{price}</p>
 
-                    <div className="modal-buttons">
-                        <button type="button" onClick={onClose}>
-                            Annulla
-                        </button>
+                    <div>
+                        {errorMessage && (
+                            <p style={{ color: "red" }}>{errorMessage}</p>
+                        )}
+                        <div className="modal-buttons">
+                            <button type="button" onClick={onClose}>
+                                Annulla
+                            </button>
 
-                        <button type="submit">Conferma</button>
+                            <button type="submit">Conferma</button>
+                        </div>
                     </div>
                 </form>
             </div>

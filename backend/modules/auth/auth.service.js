@@ -30,7 +30,7 @@ const login = async (email, password) => {
         },
         process.env.JWT_SECRET,
         {
-            expiresIn: "1Hr",
+            expiresIn: "1h",
         },
     );
 
@@ -95,7 +95,7 @@ const googleAuth = async (idToken) => {
         },
         process.env.JWT_SECRET,
         {
-            expiresIn: "1Hr",
+            expiresIn: "1h",
         },
     );
 

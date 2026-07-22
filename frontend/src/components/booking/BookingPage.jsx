@@ -1,7 +1,91 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import BookingCard from "./BookingCard.jsx";
+import notFavourite from "../../assets/notfavourite.png";
+
+import "./BookingModal.css";
+
 const BookingPage = () => {
+    const navigate = useNavigate();
+
+    const [reservations, setReservations] = useState([]);
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("/login");
+    };
+
+    const handleBack = () => {
+        navigate(-1);
+    };
+
+    useEffect(() => {
+        const fetchReservations = async () => {
+            try {
+                const response = await fetch(
+                    import.meta.env.VITE_BACKEND_URL + "/reservations",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    },
+                );
+
+                const data = await response.json();
+
+                console.log("Prenotazioni:", data);
+
+                setReservations(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchReservations();
+    }, []);
+
     return (
-        <div style={{ padding: "20px", backgroundColor: "navy" }}>
-            Booking Page
+        <div className="booking-page">
+            <div className="booking-header">
+                <span className="back-icon" onClick={handleBack}>
+                    ❮
+                </span>
+
+                <h2>My Reservations 📌</h2>
+
+                <button onClick={handleLogout} className="booking-button">
+                    Log Out
+                </button>
+            </div>
+
+            <div className="reservations-container">
+                {reservations.length === 0 ? (
+                    <div>
+                        <p
+                            style={{
+                                textAlign: "center",
+                                width: "100%",
+                                marginTop: "20vh",
+                            }}
+                        >
+                            Non hai nessuna prenotazione.
+                        </p>
+                        <img
+                            src={notFavourite}
+                            alt="Nessun preferito"
+                            style={{ width: "250px" }}
+                        />
+                    </div>
+                ) : (
+                    reservations.map((reservation) => (
+                        <BookingCard
+                            key={reservation._id}
+                            reservation={reservation}
+                            setReservations={setReservations}
+                        />
+                    ))
+                )}
+            </div>
         </div>
     );
 };

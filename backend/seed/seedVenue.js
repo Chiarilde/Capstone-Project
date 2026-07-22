@@ -3,7 +3,7 @@ export const seedVenues = [
         name: "Ocean Wild Villa",
         location: "Fuerteventura, Spain",
         description:
-            "Villa minimalista con vista sull'oceano, perfetta per surf e yoga tra dune e vento atlantico.",
+            "Villa minimalista affacciata sull'oceano Atlantico, circondata da dune dorate e paesaggi selvaggi. Un rifugio luminoso e rilassante dove vivere il ritmo dell'isola tra surf, yoga e tramonti spettacolari.",
         pricePerNight: 45,
         capacity: 20,
         images: ["fuerte.jpg"],
@@ -13,7 +13,7 @@ export const seedVenues = [
         name: "Cliff Yoga Retreat",
         location: "Tenerife, Spain",
         description:
-            "Retreat su scogliera vulcanica con sessioni di yoga al tramonto.",
+            "Retreat panoramico costruito su una spettacolare scogliera vulcanica con vista sull'oceano. Un luogo immerso nella natura dove praticare yoga al tramonto, respirare aria marina e scoprire le coste selvagge di Tenerife.",
         pricePerNight: 55,
         capacity: 25,
         images: ["tenerife.jpg"],
@@ -23,7 +23,7 @@ export const seedVenues = [
         name: "Riad Dune Escape",
         location: "Essaouira, Morocco",
         description:
-            "Riad tradizionale tra medina e oceano, hotspot ideale per surf e cultura berbera.",
+            "Riad tradizionale dal fascino marocchino situato tra le vie della medina e le spiagge dell'Atlantico. Un'esperienza autentica tra architettura locale, cultura berbera, profumi delle spezie e sessioni di surf.",
         pricePerNight: 40,
         capacity: 15,
         images: ["riad.jpg"],
@@ -33,7 +33,7 @@ export const seedVenues = [
         name: "Trabucco Sunset House",
         location: "Puglia, Italy",
         description:
-            "Casa sul mare vicino a un antico trabucco, perfetta per yoga al tramonto e pace assoluta.",
+            "Casa sul mare immersa nella costa pugliese, a pochi passi da un antico trabucco affacciato sull'Adriatico. Una location tranquilla e suggestiva dove praticare yoga al tramonto, rilassarsi e vivere la magia del mare.",
         pricePerNight: 57,
         capacity: 10,
         images: ["puglia.jpg"],
@@ -43,7 +43,7 @@ export const seedVenues = [
         name: "Bali Flow Villa",
         location: "Uluwatu, Bali",
         description:
-            "Villa tropicale tra risaie e scogliere, epicentro di surf e spiritualità.",
+            "Villa tropicale circondata da palme, natura rigogliosa e panorami mozzafiato sulle scogliere di Uluwatu. Un luogo dedicato al benessere e alla connessione con la natura, perfetto per surf, yoga e mindfulness.",
         pricePerNight: 34,
         capacity: 15,
         images: ["bali1.jpg"],
@@ -53,7 +53,7 @@ export const seedVenues = [
         name: "Atlantic Skate Loft",
         location: "Lisbon, Portugal",
         description:
-            "Loft urbano creativo tra skate spot, street culture e night life.",
+            "Loft moderno nel cuore creativo di Lisbona, circondato da quartieri artistici, skate spot e locali caratteristici. La base ideale per chi vuole unire sport, cultura urbana e vita notturna.",
         pricePerNight: 49,
         capacity: 20,
         images: ["lisbona.jpg"],
@@ -63,7 +63,7 @@ export const seedVenues = [
         name: "Dunas Wing House",
         location: "Fuerteventura, Spain",
         description:
-            "Villa coloniale a Sotavento, uno dei migliori spot europei per il wing foil.",
+            "Villa dal carattere mediterraneo immersa nei paesaggi desertici di Sotavento, una delle zone più famose d'Europa per gli sport acquatici. Perfetta per chi cerca vento, oceano e adrenalina tra wing foil e surf.",
         pricePerNight: 56,
         capacity: 25,
         images: ["fuerteventura.jpg"],
@@ -73,7 +73,7 @@ export const seedVenues = [
         name: "Hidden Surf Riad",
         location: "Taghazout, Morocco",
         description:
-            "Riad surf-oriented nel villaggio più iconico del Marocco occidentale.",
+            "Riad accogliente nel leggendario villaggio surf di Taghazout, con terrazze panoramiche sull'oceano e un'atmosfera rilassata. Il luogo ideale per alternare giornate sulle onde, yoga e scoperta della cultura marocchina.",
         pricePerNight: 40,
         capacity: 10,
         images: ["marocco.jpg"],
@@ -83,7 +83,7 @@ export const seedVenues = [
         name: "Cliffside Skate & Surf House",
         location: "Ericeira, Portugal",
         description:
-            "Casa sulla scogliera tra skatepark naturali e surf spot di livello mondiale.",
+            "Casa sulla scogliera affacciata sull'oceano in uno dei paradisi europei del surf. Una location dinamica tra spiagge selvagge, skate culture e tramonti incredibili sulla costa portoghese.",
         pricePerNight: 52,
         capacity: 15,
         images: ["ericeira.jpg"],
@@ -93,7 +93,7 @@ export const seedVenues = [
         name: "Rice Field Zen Villa",
         location: "Canggu, Bali",
         description:
-            "Villa immersa nei campi di riso tra yoga, mindfulness e lifestyle digitale nomade.",
+            "Villa immersa nel verde dei campi di riso di Canggu, dove natura tropicale e lifestyle moderno convivono. Uno spazio tranquillo per praticare yoga, mindfulness e vivere un'esperienza da vero nomade digitale.",
         pricePerNight: 39,
         capacity: 30,
         images: ["bali.jpg"],
@@ -102,7 +102,8 @@ export const seedVenues = [
     {
         name: "Casita Bonita",
         location: "Tarifa, Spain",
-        description: "Casa immersa nella pineta fra yoga, corsi di sup e surf.",
+        description:
+            "Casa accogliente immersa nella pineta vicino alle spiagge selvagge di Tarifa, famosa per il vento e gli sport acquatici. Un rifugio rilassante tra natura, yoga, surf e giornate in mare.",
         pricePerNight: 69,
         capacity: 20,
         images: ["tarifa.jpg"],
@@ -112,7 +113,7 @@ export const seedVenues = [
         name: "Camping Poggio Reale",
         location: "Sardinia, Italy",
         description:
-            "Bungalows sul mare con possibilità di praticare sup, equitazione e biking.",
+            "Bungalows immersi nella natura sarda a pochi passi dal mare cristallino. Una location autentica per vivere l'isola tra escursioni, sport outdoor, equitazione e momenti di relax nella natura.",
         pricePerNight: 39,
         capacity: 20,
         images: ["sardinia.jpg"],

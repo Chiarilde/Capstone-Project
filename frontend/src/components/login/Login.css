@@ -1,22 +1,14 @@
 .login-container {
-    min-height: 100vh;
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     gap: 3rem;
     padding: 2rem;
-    border: none;
 }
 .logo {
     width: 150px;
     height: auto;
     object-fit: contain;
-    display: block;
-    left: 10px;
-    position: absolute;
-    top: 2px;
-    margin-bottom: 10px;
 }
 
 .login-card {
@@ -70,7 +62,7 @@ h2 {
 }
 h2 {
     margin-bottom: 35px;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 input {
     width: 90%;
@@ -104,10 +96,13 @@ button {
     line-height: 1.1;
 }
 .login-page {
-    background-color: #fefefb;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.2px);
+    -webkit-backdrop-filter: blur(2.2px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     padding: 1.6rem;
-    height: 400px;
     box-shadow: 0 0 30px rgba(255, 123, 25, 0.5);
 }
 span.colors {
