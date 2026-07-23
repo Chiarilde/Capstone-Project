@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./BookingModal.css";
+import "./Booking.css";
 import { useNavigate } from "react-router-dom";
 
 const initialBookingState = {

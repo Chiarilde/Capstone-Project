@@ -206,7 +206,6 @@ h1 {
     transition: all 0.2s ease;
 }
 
-/* stato attivo: sto guardando i preferiti */
 .fav-button.active {
     background-color: #ff7b19;
 
@@ -220,4 +219,22 @@ h1 {
 .logout-button:hover {
     background-color: #ffa21f;
     color: #fefdf9;
+}
+@media (max-width: 600px) {
+    .header {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo logout"
+            "title fav"
+            "title res";
+    }
+
+    .header > .logout-button {
+        grid-area: logout;
+        justify-self: end;
+    }
+
+    .header > .buttons {
+        grid-column: span 2;
+    }
 }

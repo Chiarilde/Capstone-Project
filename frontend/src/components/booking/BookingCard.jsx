@@ -1,4 +1,4 @@
-import "./BookingModal.css";
+import "./Booking.css";
 
 export default function BookingCard({ reservation, setReservations }) {
     const image = reservation.venue?.images?.[0]

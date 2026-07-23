@@ -104,13 +104,13 @@
     margin-left: 10px;
 }
 .booking-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
     align-items: center;
-    width: 100vw;
+    width: 100%;
 }
 .booking-header h2 {
-    margin-bottom: 0;
+    margin: 0;
 }
 .back-icon:hover {
     transform: translateX(-4px);
@@ -220,4 +220,36 @@
 .booking-button:hover {
     background-color: #ffa21f;
     color: #fefdf9;
+}
+@media (max-width: 900px) {
+    .booking-card {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .booking-image-container {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .booking-header h2 {
+        font-size: 1.3rem;
+    }
+    .booking-activities {
+        margin: auto;
+        width: fit-content;
+    }
+
+    .booking-location {
+        text-align: center;
+    }
+
+    .booking-details {
+        margin: auto;
+        border: none;
+    }
+
+    .booking-details > p {
+        text-align: center;
+    }
 }

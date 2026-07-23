@@ -1,6 +1,6 @@
 import * as reservationService from "../reservation/reservation.service.js";
 
-// CREATE RESERVATION
+// crea la prenotazione
 export const createReservation = async (req, res) => {
     try {
         const reservationData = {
@@ -21,7 +21,7 @@ export const createReservation = async (req, res) => {
     }
 };
 
-// GET ALL RESERVATIONS
+// prende tutte le prenotazioni
 export const getReservations = async (req, res) => {
     try {
         const reservations = await reservationService.getReservations();
@@ -34,7 +34,7 @@ export const getReservations = async (req, res) => {
     }
 };
 
-// GET RESERVATION BY ID
+// prende la prenotazione per id
 export const getReservationById = async (req, res) => {
     try {
         const reservation = await reservationService.getReservationById(
@@ -55,7 +55,7 @@ export const getReservationById = async (req, res) => {
     }
 };
 
-// DELETE RESERVATION
+// cancella la prenotazione
 export const deleteReservation = async (req, res) => {
     try {
         const reservation = await reservationService.deleteReservation(

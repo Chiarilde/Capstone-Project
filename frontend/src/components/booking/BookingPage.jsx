@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BookingCard from "./BookingCard.jsx";
 import notFavourite from "../../assets/notfavourite.png";
 
-import "./BookingModal.css";
+import "./Booking.css";
 
 const BookingPage = () => {
     const navigate = useNavigate();
@@ -47,13 +47,13 @@ const BookingPage = () => {
     return (
         <div className="booking-page">
             <div className="booking-header">
-                <span className="back-icon" onClick={handleBack}>
+                <div className="back-icon" onClick={handleBack}>
                     ❮
-                </span>
+                </div>
 
                 <h2>My Reservations 📌</h2>
 
-                <button onClick={handleLogout} className="booking-button">
+                <button onClick={handleLogout} className="logout-button">
                     Log Out
                 </button>
             </div>

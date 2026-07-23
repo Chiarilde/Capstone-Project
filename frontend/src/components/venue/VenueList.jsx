@@ -73,18 +73,20 @@ export default function VenueList() {
         <div>
             <div className="header">
                 <img src={logo} alt="Retreat Hut logo" className="logo" />
-                <button
-                    className="res-button"
-                    onClick={() => navigate("/reservations")}
-                >
-                    My Reservations 📌
-                </button>
-                <button
-                    onClick={handleMyFavourites}
-                    className={`fav-button ${!showAll ? "active" : ""}`}
-                >
-                    My Favourites ❤️
-                </button>
+                <div className="buttons">
+                    <button
+                        className="res-button"
+                        onClick={() => navigate("/reservations")}
+                    >
+                        My Reservations 📌
+                    </button>
+                    <button
+                        onClick={handleMyFavourites}
+                        className={`fav-button ${!showAll ? "active" : ""}`}
+                    >
+                        My Favourites ❤️
+                    </button>
+                </div>
                 <button onClick={handleLogout} className="logout-button">
                     Log Out
                 </button>
@@ -100,7 +102,7 @@ export default function VenueList() {
                                 marginTop: "20vh",
                             }}
                         >
-                            Non hai nessun preferito.
+                            Ops, non hai nessun preferito!
                         </p>
 
                         <img
