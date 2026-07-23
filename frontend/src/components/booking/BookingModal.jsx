@@ -18,6 +18,16 @@ export default function BookingModal({ open, onClose }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (!booking.user) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setBooking((prev) => ({
+                ...prev,
+                user: localStorage.getItem("userId"),
+            }));
+        }
+    }, [booking.user]);
+
+    useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setBooking({
             ...initialBookingState,

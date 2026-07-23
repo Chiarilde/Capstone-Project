@@ -33,8 +33,6 @@ const BookingPage = () => {
 
                 const data = await response.json();
 
-                console.log("Prenotazioni:", data);
-
                 setReservations(data);
             } catch (error) {
                 console.log(error);
